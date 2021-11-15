@@ -7,17 +7,6 @@ CALC_COMPLEX_METRICS = True
 
 TOKEN_LIMIT = 15
 
-# WORKER_MAPPING = {
-#     "commits" : 42,
-#     "pulls" : 42,
-#     "issues"  : 50,
-#     "contributors": 2,
-#     "workflowruns": 33,
-#     "releases": 42,
-#     "stars": 50,
-#     "forks": 50,
-# }
-
 TQDM_MAPPING = {
     "commits" : 0,
     "issues"  : 1,
@@ -43,7 +32,7 @@ REPOS = [
     "https://github.com/bitcoin-core/secp256k1",
     "https://github.com/EbookFoundation/free-programming-books",
     "https://github.com/cabaletta/baritone"
-]
+] 
 
 SMALL_REPOS = [
     "https://github.com/Leosimetti/AV-tracker",
@@ -79,15 +68,15 @@ CALCULATED_REPOS = [
     "https://github.com/PhilJay/MPAndroidChart",
     "https://github.com/square/retrofit",
     "https://github.com/Activiti/Activiti",
-    "https://github.com/checkstyle/checkstyle",
+    "https://github.com/android-async-http/android-async-http",
     "https://github.com/apache/zookeeper",  
+    "https://github.com/checkstyle/checkstyle",
     "https://github.com/dromara/hutool",
     "https://github.com/alibaba/Sentinel",
     "https://github.com/alibaba/spring-cloud-alibaba",
     "https://github.com/google/ExoPlayer",
     "https://github.com/spring-projects/spring-security",
     "https://github.com/prestodb/presto",
-    "https://github.com/android-async-http/android-async-http",
     "https://github.com/redisson/redisson",
     "https://github.com/apache/storm",
     "https://github.com/openhab/openhab-addons",

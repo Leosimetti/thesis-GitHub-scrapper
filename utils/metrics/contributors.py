@@ -9,7 +9,7 @@ class Contributors(BaseMetric):
     def __init__(self, link: str):
         super().__init__(link)
         self.main_container = self.get_main_container(self._repo.get_stats_contributors)
-        self.total = len(self.main_container)
+        self.total = self.main_container.totalCount
 
         self.metrics = {
             "[Contributors] Count": lambda: self._repo.get_contributors().totalCount,

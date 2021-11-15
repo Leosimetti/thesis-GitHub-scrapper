@@ -1,13 +1,17 @@
+from concurrent.futures.thread import ThreadPoolExecutor
 from utils.metrics.base  import BaseMetric
 from datetime import datetime
 
 class Meta(BaseMetric):
 
     def __init__(self, link: str):
+        super().__init__(link)
+
+        files, folders = self.get_content_metrics()
         self.metrics = {
             "[Repo] Size": lambda: self._repo.size,
-            "[Repo] Folders": self.get_folder_count,
-            "[Repo] Files": self.get_file_count,
+            "[Repo] Folders": lambda: folders,
+            "[Repo] Files": lambda: files,
             "[Repo] Topics": lambda: len(self._repo.get_topics()),
             "[Repo] Branches": lambda: self._repo.get_branches().totalCount,
             "[Repo] Age (days)": lambda: (datetime.now() - self._repo.created_at).days,
@@ -19,7 +23,6 @@ class Meta(BaseMetric):
             "[Repo] Readme length (chars)": lambda: len(self._repo.get_readme().content),
             "[Repo] Network members": lambda: self._repo.network_count,
         }
-        super().__init__(link)
         self.calculate_metrics()
     
     def get_language_count(self):
@@ -30,22 +33,21 @@ class Meta(BaseMetric):
 
         return len(decent_languages)
     
-    def get_folder_count(self):
-        def recursive_helper(file):
-            if file.type == "dir":
-                return 1 + sum(map(recursive_helper, self._repo.get_contents(file.path)))
-            else: 
-                return 0
-                
-        all_files = self._repo.get_contents("/")
-        return sum(map(recursive_helper, all_files))
+    def get_content_metrics(self):
+        self.folders = 0
 
-    def get_file_count(self):
         def recursive_helper(file):
             if file.type == "dir":
+                self.folders += 1
                 return sum(map(recursive_helper, self._repo.get_contents(file.path)))
             else: 
-                return 1 
+                return 1
+            
+        root_contents = self._repo.get_contents("/")
+        if type(root_contents is list):
+            files, folders = sum(map(recursive_helper, root_contents)), self.folders
+            delattr(self, "folders")
+            return files, folders
+        else:
+            return 1, 0
 
-        all_files = self._repo.get_contents("/")
-        return sum(map(recursive_helper, all_files))
