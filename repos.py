@@ -1,16 +1,3 @@
-NEW_REPOS = [
-    "https://github.com/jamalex/notion-py",
-    "https://github.com/StackExchange/StackExchange.Redis",
-    "https://github.com/cqfn/eo",
-    "https://github.com/vifm/vifm",
-    "https://github.com/telegramdesktop/tdesktop",
-    "https://github.com/nocodb/nocodb",
-    "https://github.com/TheCherno/Hazel",
-    "https://github.com/bitcoin-core/secp256k1",
-    "https://github.com/EbookFoundation/free-programming-books",
-    "https://github.com/cabaletta/baritone"
-] 
-
 SMALL_TEST_REPOS = [
     "https://github.com/Leosimetti/AV-tracker",
     "https://github.com/Leosimetti/devops",
@@ -18,19 +5,83 @@ SMALL_TEST_REPOS = [
     "https://github.com/soundcloud/project-dev-kpis",
 ]
 
-TOO_BIG_REPOS = [
-    "https://github.com/apache/solr",
+
+NEW_REPOS = [
+    # "https://github.com/jamalex/notion-py",
+    # "https://github.com/StackExchange/StackExchange.Redis",
+    # "https://github.com/cqfn/eo",
+    # "https://github.com/vifm/vifm",
+    # "https://github.com/telegramdesktop/tdesktop",
+    # "https://github.com/nocodb/nocodb",
+    # "https://github.com/TheCherno/Hazel",
+    # "https://github.com/bitcoin-core/secp256k1",
+    # "https://github.com/EbookFoundation/free-programming-books",
+    # "https://github.com/cabaletta/baritone",
+    # "https://github.com/puppetlabs/puppet",
+    # "https://github.com/chef/chef",
+    # "https://github.com/capistrano/capistrano",
+    # "https://github.com/fabric/fabric",
+    # "https://github.com/statsd/statsd",
+    # "https://github.com/graphite-project/graphite-web",
+    "https://github.com/elastic/logstash",
+    "https://github.com/prometheus/prometheus",
+    "https://github.com/StackStorm/st2",
+    "https://github.com/getsentry/sentry",
+    "https://github.com/deployphp/deployer",
+    "https://github.com/kubernetes/kubernetes",
+    "https://github.com/netdata/netdata",
+    "https://github.com/apache/maven",
+    "https://github.com/cloud66-oss/habitus",
+    "https://github.com/hashicorp/consul",
+    "https://github.com/hashicorp/nomad",
+    "https://github.com/spinnaker/spinnaker",
+    "https://github.com/Kong/kong",
+    "https://github.com/apache/mesos",
+    "https://github.com/SeleniumHQ/selenium",
+    "https://github.com/opendiffy/diffy",
+    "https://github.com/harness/drone",
+    "https://github.com/hashicorp/vault",
+    "https://github.com/NagiosEnterprises/nagioscore",
+    "https://github.com/zabbix/zabbix",
+    "https://github.com/varietywalls/variety",
+    "https://github.com/apiaryio/dredd",
+    "https://github.com/bukalapak/snowboard",
+    "https://github.com/Bismuth-Forge/bismuth",
+    "https://github.com/notifirehq/notifire",
+    "https://github.com/iridakos/goto",
+    "https://github.com/ranger/ranger",
+    "https://github.com/moncho/dry",
+    "https://github.com/fdw/rofimoji",
+    "https://github.com/Wox-launcher/Wox",
+    "https://github.com/Janspiry/Image-Super-Resolution-via-Iterative-Refinement",
+    "https://github.com/koekeishiya/yabai",
+    "https://github.com/sveltejs/svelte",
+    "https://github.com/github/docs",
+] 
+
+
+BIG_REPOS = [
+    "https://github.com/grafana/grafana",
+    "https://github.com/moby/moby",
     "https://github.com/dbeaver/dbeaver",
     "https://github.com/scala/scala",
+    "https://github.com/hashicorp/terraform",
+    "https://github.com/apache/solr",
     "https://github.com/openjdk/loom",
+]
+
+TOO_BIG_REPOS = [
+    "https://github.com/saltstack/salt",
+    "https://github.com/ansible/ansible",
     "https://github.com/elastic/elasticsearch",
     "https://github.com/llvm/llvm-project",
     "https://github.com/torvalds/linux",
+    "https://github.com/openstack/openstack",
+
 ]
 
 
 CALCULATED_REPOS = [
-    "https://github.com/gokcehan/lf",
     "https://github.com/tachiyomiorg/tachiyomi",
     "https://github.com/jobobby04/TachiyomiSY",
     "https://github.com/zxing/zxing",
@@ -105,6 +156,7 @@ CALCULATED_REPOS = [
     "https://github.com/kontalk/androidclient",
     "https://github.com/liquibase/liquibase",
     "https://github.com/square/okhttp",
+    "https://github.com/gokcehan/lf",
     "https://github.com/google/guava",
     "https://github.com/JakeWharton/butterknife",
     "https://github.com/airbnb/lottie-android",

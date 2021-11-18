@@ -21,15 +21,15 @@ from utils.metrics.forks import Forks
 from utils.metrics.meta import Meta
 
 METRICS = [
-    Meta,
-    Contributors,
     Stars,
-    Releases,
     Forks,
+    Releases,
+    Meta,
     Pulls,
     Commits,
     Issues,
     WorkflowRuns,
+    # Contributors,
 ]
 
 def handle_exception(errorClass, exc, trace):
@@ -47,10 +47,9 @@ def calc_metrics(repo):
             metric_ctx.submit(metric, repo)
 
 if __name__ == "__main__":
-    now = time.time()
+    now = time.perf_counter()
     TO_CALC = repos.NEW_REPOS
     
-    # res = METRICS[0](TO_CALC[0])
 
     # with ThreadPoolExecutor(max_workers=5) as p:
     #     for repo in TO_CALC:
@@ -59,5 +58,5 @@ if __name__ == "__main__":
     for repo in TO_CALC:
         calc_metrics(repo)
 
-    print(f'Took {time.time() - now} s')
+    print(f'Took {time.perf_counter() - now} s')
 

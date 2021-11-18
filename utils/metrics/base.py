@@ -140,8 +140,9 @@ class BaseMetric:
                     f"[{self.repo_name}] {classname} load progress")
 
                 def load_helper(el):
+                    res =  self.load(el)
                     load_progress.update()
-                    return self.load(el)
+                    return res
 
                 self.main_container = list(
                     t.map(load_helper, self.main_container))
@@ -160,7 +161,8 @@ class BaseMetric:
         # Checking whether there are Iterator-tied metrics to calculate
         has_data_to_calc = hasattr(self, "main_container") and self.total
         needs_calculation = (not self.results_exist() or settings.RECALCULATE)
-        if  has_data_to_calc and needs_calculation and settings.CALC_COMPLEX_METRICS:
+        if has_data_to_calc and needs_calculation and settings.CALC_COMPLEX_METRICS:
+                print("started calc")
                 self.calculate_info()
 
         # Removing non-metric fields

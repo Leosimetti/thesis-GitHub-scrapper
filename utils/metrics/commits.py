@@ -56,20 +56,7 @@ class Commits(BaseMetric):
         files_without_first_commit = files - \
             len(self.main_container.reversed[0].files)
         max_commints = max(date_values)
-        # min_commints = min(date_values)
         age_days = (datetime.now() - self._repo.created_at).days
-
-        # old = {
-        #     "commits_max_per_day": max_commints,
-        #     "commits_added_total": additions,
-        #     "commits_deleted_total": deletions,
-        #     "commits_deleted_average": deletions/self.total,
-        #     "commits_added_average": additions/self.total,
-        #     "commits_per_day": self.total/unique_commit_dates,
-        #     "commits_true_per_day": self.total/age_days,
-        #     "commits_msg_length_average_chars": msg_len/self.total,
-        #     "commits_files_changed_average": files_without_first_commit/self.total
-        # }
 
 
         return {
