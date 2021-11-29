@@ -1,6 +1,6 @@
 from utils.tokens import TOKENS
 
-REFETCH = False
+REFETCH = True
 RECALCULATE = True
 CALC_SIMPLE_METRICS = True
 CALC_COMPLEX_METRICS = True

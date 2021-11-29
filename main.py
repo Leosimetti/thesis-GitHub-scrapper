@@ -9,6 +9,7 @@ from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
 from functools import reduce
 import sys
 import traceback
+import random
 
 from utils.metrics.contributors import Contributors
 from utils.metrics.workflowRuns import WorkflowRuns
@@ -24,12 +25,12 @@ METRICS = [
     Stars,
     Forks,
     Releases,
-    Meta,
     Pulls,
     Commits,
     Issues,
     WorkflowRuns,
-    # Contributors,
+    Meta,
+    Contributors,
 ]
 
 def handle_exception(errorClass, exc, trace):
@@ -48,15 +49,24 @@ def calc_metrics(repo):
 
 if __name__ == "__main__":
     now = time.perf_counter()
-    TO_CALC = repos.NEW_REPOS
-    
+    TO_CALC = repos.BIG_REPOS# + repos.BIG_REPOS
 
-    # with ThreadPoolExecutor(max_workers=5) as p:
+    def main():
+        random.shuffle(TO_CALC)
+        random.shuffle(METRICS)
+
+        try:
+            for repo in TO_CALC:
+                calc_metrics(repo)
+        except:
+            main()
+
+    main()
+    # METRICS[0](TO_CALC[0])
+    
+    # with ThreadPoolExecutor(max_workers=2) as p:
     #     for repo in TO_CALC:
     #         p.submit(calc_metrics, repo)
-
-    for repo in TO_CALC:
-        calc_metrics(repo)
 
     print(f'Took {time.perf_counter() - now} s')
 

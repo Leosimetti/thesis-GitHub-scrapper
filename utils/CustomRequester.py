@@ -58,7 +58,7 @@ class CustomRequester(Requester):
 
     def handle_no_tokens(self):
         closest_token = min(self.token_restores_at.items(), key=lambda x: x[1])[1]
-        print(f"😭😭😭 Closest usable token at {closest_token}")
+        # print(f"😭😭😭 Closest usable token at {closest_token}")
         time.sleep(101)
 
     def set_valid_token(self):
@@ -73,7 +73,7 @@ class CustomRequester(Requester):
                 token_idx = settings.TOKENS.index(token)
                 reset_date = self.get_current_token_reset_date()
                 self.token_restores_at[token] = reset_date
-                print(f"[Token {token_idx} ] Expired - will be reset at {reset_date}")
+                # print(f"[Token {token_idx} ] Expired - will be reset at {reset_date}")
 
             self.handle_no_tokens()
 
@@ -90,7 +90,7 @@ class CustomRequester(Requester):
             token_idx = settings.TOKENS.index(current_token)
             reset_date = datetime.now() + timedelta(minutes=8)
             self.token_restores_at[current_token] = reset_date
-            print(f"[Token {token_idx}] Secondary rate limit hit until {reset_date}!!!")
+            # print(f"[Token {token_idx}] Secondary rate limit hit until {reset_date}!!!")
             
             if (good_tokens := self.get_good_tokens()):
                 self.set_token(random.choice(good_tokens))

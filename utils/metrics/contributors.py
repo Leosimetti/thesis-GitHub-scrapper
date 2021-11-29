@@ -7,7 +7,13 @@ class Contributors(BaseMetric):
 
     def __init__(self, link: str):
         super().__init__(link)
-        self.main_container = self.get_main_container(lambda: FakePaginatedList(self._repo.get_stats_contributors()))
+
+        def get_top10():
+            array = self._repo.get_stats_contributors()
+            top10 = sorted(array, key=lambda x: x.total, reverse=True)[:10]
+            return FakePaginatedList(top10)
+
+        self.main_container = self.get_main_container(get_top10)
         self.total = self.main_container.totalCount
 
         self.metrics = {
@@ -60,15 +66,15 @@ class Contributors(BaseMetric):
 
     def get_final_metrics(self, *, commits, weeks, additions, deletions, followers, following, public_repos, team_count, stars, watchers, forks):
         return {
-            "[Contributors Top-100] Average commits": commits/self.total,
-            "[Contributors Top-100] Average participation weeks": weeks/self.total,
-            "[Contributors Top-100] Average additions": additions/self.total,
-            "[Contributors Top-100] Average deletions": deletions/self.total,
-            "[Contributors Top-100] Average followers": followers/self.total,
-            "[Contributors Top-100] Average following": following/self.total,
-            "[Contributors Top-100] Average public repositories" : public_repos/self.total,
-            "[Contributors Top-100] Average teams": team_count/self.total,
-            "[Contributors Top-100] Average stars": stars/self.total,
-            "[Contributors Top-100] Average watchers": watchers/self.total,
-            "[Contributors Top-100] Average forks": forks/self.total,
+            "[Contributors Top-10] Average commits": commits/self.total,
+            "[Contributors Top-10] Average participation weeks": weeks/self.total,
+            "[Contributors Top-10] Average additions": additions/self.total,
+            "[Contributors Top-10] Average deletions": deletions/self.total,
+            "[Contributors Top-10] Average followers": followers/self.total,
+            "[Contributors Top-10] Average following": following/self.total,
+            "[Contributors Top-10] Average public repositories" : public_repos/self.total,
+            "[Contributors Top-10] Average teams": team_count/self.total,
+            "[Contributors Top-10] Average stars": stars/self.total,
+            "[Contributors Top-10] Average watchers": watchers/self.total,
+            "[Contributors Top-10] Average forks": forks/self.total,
         }
