@@ -26,10 +26,19 @@ class Contributors(BaseMetric):
         author.followers
         author.following
         author.public_repos
-        author.team_count
         
         tmp = []
-        for repo in author.get_repos():
+
+        def wrapper(gen):
+            while True:
+                try:
+                    yield next(gen)
+                except StopIteration:
+                    break
+                except:
+                    print("Bad repo ignored")
+
+        for repo in wrapper(author.get_repos().__iter__()):
             # print(f"got {repo.full_name}")
             repo.stargazers_count
             repo.subscribers_count
@@ -58,13 +67,12 @@ class Contributors(BaseMetric):
             "followers": author.followers or 0,
             "following": author.following or 0,
             "public_repos": author.public_repos or 0,
-            "team_count": author.team_count or 0,
             "stars": stars or 0,
             "watchers": watchers or 0,
             "forks": forks or 0,
         }
 
-    def get_final_metrics(self, *, commits, weeks, additions, deletions, followers, following, public_repos, team_count, stars, watchers, forks):
+    def get_final_metrics(self, *, commits, weeks, additions, deletions, followers, following, public_repos, stars, watchers, forks):
         return {
             "[Contributors Top-10] Average commits": commits/self.total,
             "[Contributors Top-10] Average participation weeks": weeks/self.total,
@@ -73,7 +81,6 @@ class Contributors(BaseMetric):
             "[Contributors Top-10] Average followers": followers/self.total,
             "[Contributors Top-10] Average following": following/self.total,
             "[Contributors Top-10] Average public repositories" : public_repos/self.total,
-            "[Contributors Top-10] Average teams": team_count/self.total,
             "[Contributors Top-10] Average stars": stars/self.total,
             "[Contributors Top-10] Average watchers": watchers/self.total,
             "[Contributors Top-10] Average forks": forks/self.total,

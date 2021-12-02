@@ -7,3 +7,4 @@ __pycache__
 venv
 ven310
 utils/tokens.py
+bad_dump/

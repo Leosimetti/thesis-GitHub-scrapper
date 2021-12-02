@@ -22,15 +22,15 @@ from utils.metrics.forks import Forks
 from utils.metrics.meta import Meta
 
 METRICS = [
-    Stars,
-    Forks,
+    # Stars,
+    # Forks,
     Releases,
-    Pulls,
-    Commits,
-    Issues,
-    WorkflowRuns,
-    Meta,
-    Contributors,
+    # Pulls,
+    # Commits,
+    # Issues,
+    # WorkflowRuns,
+    # Meta,
+    # Contributors,
 ]
 
 def handle_exception(errorClass, exc, trace):
@@ -43,27 +43,33 @@ def handle_exception(errorClass, exc, trace):
 sys.excepthook = handle_exception
 
 def calc_metrics(repo):
-    with (ThreadPoolExecutor(max_workers=1) as metric_ctx):
-        for metric in METRICS:
-            metric_ctx.submit(metric, repo)
+    for metric in METRICS:
+        metric(repo)
+    # with (ThreadPoolExecutor(max_workers=1) as metric_ctx):
+    #     for metric in METRICS:
+    #         metric_ctx.submit(metric, repo)
 
 if __name__ == "__main__":
     now = time.perf_counter()
-    TO_CALC = repos.BIG_REPOS# + repos.BIG_REPOS
+    TO_CALC = repos.CALCULATED_REPOS
 
-    def main():
-        random.shuffle(TO_CALC)
-        random.shuffle(METRICS)
+    # def main(shuffle=False):
+    #     if shuffle:
+    #         random.shuffle(TO_CALC)
+    #         random.shuffle(METRICS)
 
-        try:
-            for repo in TO_CALC:
-                calc_metrics(repo)
-        except:
-            main()
+    #     try:
+    #         for repo in TO_CALC:
+    #             calc_metrics(repo)
+    #     except:
+    #         main()
+    # main(True)
 
-    main()
     # METRICS[0](TO_CALC[0])
-    
+
+    for repo in TO_CALC:
+        calc_metrics(repo)
+
     # with ThreadPoolExecutor(max_workers=2) as p:
     #     for repo in TO_CALC:
     #         p.submit(calc_metrics, repo)

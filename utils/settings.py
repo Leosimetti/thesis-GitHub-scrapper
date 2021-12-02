@@ -1,7 +1,7 @@
 from utils.tokens import TOKENS
 
-REFETCH = True
-RECALCULATE = True
+REFETCH = False
+RECALCULATE = False
 CALC_SIMPLE_METRICS = True
 CALC_COMPLEX_METRICS = True
 
