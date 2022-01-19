@@ -8,6 +8,8 @@ from collections import defaultdict
 import random
 from github.RateLimit import RateLimit
 
+CURRENT_TIME_ZONE = 3
+
 class CustomRequester(Requester):
     token_restores_at = defaultdict(lambda: datetime.now())
 
@@ -45,7 +47,7 @@ class CustomRequester(Requester):
     def get_current_token_reset_date(self):
         headers, data = self.perfrom_request("GET", "/rate_limit")
         limit = RateLimit(self, headers, data["resources"], True)
-        return limit.core.reset + timedelta(hours=3)
+        return limit.core.reset + timedelta(hours=CURRENT_TIME_ZONE)
 
     def get_current_token(self):
         return self._Requester__authorizationHeader.split(" ")[1]

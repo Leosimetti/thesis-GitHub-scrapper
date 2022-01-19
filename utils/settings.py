@@ -1,5 +1,6 @@
-from utils.tokens import TOKENS
+from utils.tokens import TOKENS, BANNED_TOKENS
 
+TOKENS = TOKENS + BANNED_TOKENS
 REFETCH = False
 RECALCULATE = False
 CALC_SIMPLE_METRICS = True

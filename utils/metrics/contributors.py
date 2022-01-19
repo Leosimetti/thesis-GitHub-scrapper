@@ -33,7 +33,7 @@ class Contributors(BaseMetric):
             while True:
                 try:
                     yield next(gen)
-                except StopIteration:
+                except (StopIteration, GeneratorExit):
                     break
                 except:
                     print("Bad repo ignored")

@@ -8,3 +8,8 @@ venv
 ven310
 utils/tokens.py
 bad_dump/
+dump/kubernetes_kubernetes/commits.szhat
+dump/php_php-src/commits.szhat
+dump/racket_racket/commits.szhat
+dump/saltstack_salt/commits.szhat
+dump/zabbix_zabbix/commits.szhat
