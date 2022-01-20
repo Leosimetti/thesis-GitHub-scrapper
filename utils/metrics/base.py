@@ -134,7 +134,7 @@ class BaseMetric:
             classname = self.__class__.__name__.lower()
             with (
                 tqdm(total=self.total, position=settings.TQDM_MAPPING[classname]) as load_progress,
-                ThreadPoolExecutor(max_workers=50) as t
+                ThreadPoolExecutor(max_workers=settings.LOAD_THREADS) as t
                 ):
                 load_progress.set_description(
                     f"[{self.repo_name}] {classname} load progress")

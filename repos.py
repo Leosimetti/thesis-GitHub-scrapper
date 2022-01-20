@@ -126,7 +126,6 @@ CALCULATED_REPOS = [
     "https://github.com/Kong/kong",
     "https://github.com/apache/mesos",
     "https://github.com/SeleniumHQ/selenium",
-    "https://github.com/opendiffy/diffy",
     "https://github.com/harness/drone",
     "https://github.com/hashicorp/vault",
     "https://github.com/NagiosEnterprises/nagioscore",
